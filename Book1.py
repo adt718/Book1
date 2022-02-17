@@ -14,12 +14,12 @@ from openpyxl import load_workbook
 
 wb = "Book1.xlsx"
 wb = excel.Workbook()
-wb.save("Book1.xlsx")
+wb.save(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
 
 path = (r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
 print(files)
 ss = load_workbook(path)
-sheet1 = ss['データ']
+# sheet1 = ss['sheet1']
 # カレントディレクトリのフォルダやファイルを全て取得
 path = os.getcwd()
 files = os.listdir(path)
@@ -27,9 +27,9 @@ print(files)
 
 # フォルダやファイルを全て取得
 
-df = pd.read_excel('Book1.py', engine='openpyxl')
+df = pd.read_excel('Book1.xlsx', engine='openpyxl')
 
-df = pd.read_excel(r"C:/Users/ists/PycharmProjects/Book1.py", sheet_name="集計")
+df = pd.read_excel(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx', sheet_name="集計")
 print(df)
 df = pd.read_excel('Book1.xlsx', sheet_name=['データ', '集計'])
 
@@ -44,6 +44,11 @@ ws = wb['データ']
 os.path.basename("Book1.xlsx")
 sheet = wb.get_sheet_by_name('データ')
 sheet = wb.active
+
+# ワークシートの作成
+# wb.create_sheet(title='データ')
+# wb.create_sheet(title='集計')
+wb.create_sheet(index=0, title='データ')
 
 #シート名を変更
 ws.title = 'データ'
