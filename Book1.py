@@ -1,6 +1,5 @@
 # ステップ1｜ライブラリの設定
 
-
 import os
 from datetime import datetime, date
 
@@ -16,7 +15,7 @@ wb = "Book1.xlsx"
 wb = excel.Workbook()
 wb.save(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
 
-path = (r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
+path = r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx'
 print(files)
 ss = load_workbook(path)
 # sheet1 = ss['sheet1']
@@ -25,13 +24,28 @@ path = os.getcwd()
 files = os.listdir(path)
 print(files)
 
+wb = openpyxl.load_workbook(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
+target_name = '集計'
+check = False
+
+# ファイル内の全てのシートをループして検索
+for ws in wb.worksheets:
+
+    # 指定シートが存在していれば、変数にTrueを格納
+    if ws.title == target_name:
+        check = True
+
+if check == True:
+    print(target_name + 'は存在します')
+else:
+    print(target_name + 'は存在しません')
 # フォルダやファイルを全て取得
 
 df = pd.read_excel('Book1.xlsx', engine='openpyxl')
 
-df = pd.read_excel(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx', sheet_name="集計")
+df = pd.read_excel(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
 print(df)
-df = pd.read_excel('Book1.xlsx', sheet_name=['データ', '集計'])
+df = pd.read_excel('Book1.xlsx')
 
 # ステップ2｜所定フォルダ内の「Book1.xlsx」を指定して読み込む
 os.path.exists('Book1.xlsx')
@@ -40,9 +54,9 @@ path = r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx'
 wb = openpyxl.Workbook()
 wb = openpyxl.load_workbook(r'C:\Users\ists\PycharmProjects\Book1\Book1.xlsx')
 
-ws = wb['データ']
+# ws = wb['データ']
 os.path.basename("Book1.xlsx")
-sheet = wb.get_sheet_by_name('データ')
+# sheet = wb.get_sheet_by_name('データ')
 sheet = wb.active
 
 # ワークシートの作成
@@ -50,17 +64,17 @@ sheet = wb.active
 # wb.create_sheet(title='集計')
 wb.create_sheet(index=0, title='データ')
 
-#シート名を変更
+# シート名を変更
 ws.title = 'データ'
 
-#別名で保存
-wb.save(r'C:\Users\ists\PycharmProjects\データ\Book1.xlsx')
-wb1 = px.load_workbook('データ')
+# 別名で保存
+# wb.save(r'C:\Users\ists\PycharmProjects\データ\Book1.xlsx')
+# wb1 = px.load_workbook('データ')
 wb2 = px.load_workbook(r"C:\Users\ists\PycharmProjects\Book1\Book1.xlsx")
-ws1 = wb1['データ']
-ws2 = wb2['集計']
+# ws1 = wb1['データ']
+# ws2 = wb2['集計']
 ws = wb["データ"]
-ws = wb["集計"]
+# ws = wb['集計']
 print(ws)
 
 # ステップ3｜集計範囲の取得
