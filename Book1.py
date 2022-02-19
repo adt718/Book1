@@ -140,12 +140,11 @@ print('second: %d' % t.second)
 print('microsecond: %d' % t.microsecond)
 print('tzinfo: %s\n' % t.tzinfo)
 
-start = date()
-end = datetime('2022-02-10').date()
-today = datetime.date.today()
-print(today.strftime('%Y%m%d'))
-
-# 日数差を表示
+start = date(2022,2,1)
+end = date(2022,2,15)
+today = date(2022,2,19)
+print(date)
+#日数差を表示
 print((end - start).days)
 
 
@@ -156,22 +155,22 @@ def daterange(_start, _end):
 
 
 period = []
-for i in daterange(start, end):
-    period.append(i)
+# for i in daterange(start, end):
+#     period.append(i)
 
 # 差分を計算
-period = ws1 - startDate
+period = startDate
 print(period)
-startdate = datetime.datetime(int(ws2['B2'].value), int(ws2['C2'].value), int(ws2['D2'].value))
-enddate = datetime.datetime(int(ws2['B3'].value), int(ws2['C3'].value), int(ws2['D3'].value))
+startDate = datetime
+endDate = datetime
 
 # ステップ4｜エクセルの最終行や最終列の取得
-lastrow1 = ws1.max_row
-lastrow2 = ws2.max_row
-lastcol2 = ws2.max_column
+lastrow1 = ws.max_row
+lastrow2 = ws.max_row
+lastcol2 = ws.max_column
 
 # ステップ5｜「データ」シートを読み込み、2次元配列values1として取得
-values1 = [[cell.value for cell in row1] for row1 in ws1]
+values1 = [[cell.value for cell in row1] for row1 in ws]
 
 # ステップ6｜条件に合う情報をFor文とIF文で場合分けして取得
 for i in range(7, lastrow2 + 1):
@@ -187,14 +186,14 @@ for i in range(7, lastrow2 + 1):
                         counter = counter + int(kingaku)
 
 # ステップ7｜ステップ6に合わない場合に0を入れる
-if counter is None:
-    counter = 0
+# if counter is None:
+#     counter = 0
 
 # ステップ8｜「集計」シートに結果を書き出す
-ws2.cell(row=i, column=j).value = counter
+# ws.cell(row=i, column=j).value = counter
 
 # Program to read the entire file (absolute path) using read() function
-file = open("python.txt", "r")
+file = open(r"C:\Users\ists\PycharmProjects\Book1\Book1.xlsx")
 content = file.read()
 print(content)
 file.close()
